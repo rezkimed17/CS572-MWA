@@ -1,0 +1,12 @@
+1. 
+setTimeout schedule a callback to run after a specific time, and registered in the timers phase of the event loop.
+setImmediate schedule a callback to run at check phase of the event loop after IO events' callbacks.
+So if an opearation don't require I/O callbacks or connections via network, then it should be with setImmediate. 
+in the other hand if the operation require I/O callbacks or connections via network, tthen it should be with setTimeout.
+
+2.
+setImmediate run at check phase, for process.nextTick it has its own queue (like priority queue) and it is handled before setImmediate. 
+So if we have an operation that needs to be done instantly we need to use process.nextTick, it may block the loop if used to much.
+
+3.
+http, Buffer, cluster, inspector, dns, child_process, console, crypto, os, constants
