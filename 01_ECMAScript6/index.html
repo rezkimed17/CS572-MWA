@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01 ECMAScript 6</title>
+    <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    
+    <script>
+        
+        /***************************************************/
+        //  removeDuplicates function in 4 different ways  //
+        /***************************************************/
+        
+        console.log(":::: removeDuplicates ::::");
+        [4,1,5,7,2,3,1,4,6,5,2].removeDuplicatesWithES6();
+        [4,1,5,7,2,3,1,4,6,5,2].removeDuplicatesWithPromise();
+        [4,1,5,7,2,3,1,4,6,5,2].removeDuplicatesWithAsyncWait();
+        [4,1,5,7,2,3,1,4,6,5,2].removeDuplicatesWithObservables();
+        
+        
+        /***************************************************/
+        //                  isWeekend                      //
+        /***************************************************/
+        
+        setTimeout(()=>console.log(":::: isWeekend ::::"), 1000);
+        setTimeout(()=>isWeekend(), 1000);
+
+        function isWeekend() {
+            const todayDate = new Date();
+            const day = todayDate.getDay();
+
+            const { of } = rxjs;
+            const { map, filter } = rxjs.operators;
+            
+            of(day)
+                .pipe(
+                    filter(x => x==0 || x ==6),
+                    map(x => "weekend" )
+                )
+                .subscribe((x)=> console.log(day+" is a "+ x));
+            
+            of(day)
+                .pipe(
+                    filter(x => x!=0 && x !=6),
+                    map(x => "weekday" ),
+                )
+                .subscribe((x)=> console.log(day+" is a "+ x));
+        }
+
+        /***************************************************/
+        //                  apply Coupon                   //
+        /***************************************************/
+        setTimeout(()=>console.log(":::: applyCoupon ::::"), 1000);
+        
+        function applyCoupon(category) {
+            return (discount) => {
+                return (item) => {
+                        return  { price: (item.price - discount*item.price) } 
+                }
+            }    
+        }
+
+        const item ={
+            "name" : "Biscuits",
+            "type" : "regular",
+            "category" : " food",
+            "price" : 2.0
+        }
+        setTimeout(()=>console.log("price: ", applyCoupon("food")(0.1)(item).price), 1000);
+    </script>
+</body>
+</html>
