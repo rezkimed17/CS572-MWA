@@ -1,22 +1,22 @@
 
 Array.prototype.odd = function() {
-    setTimeout(()=>{
+    setImmediate(()=>{
         let arr = []
         this.forEach((x)=> {
             if (x%2 != 0) arr.push(x)
         })
         console.log(arr);
-    }, 0)   
+    })   
 }
 
 Array.prototype.even = function() {
-    setTimeout(()=>{
+    setImmediate(()=>{
         let arr = []
         this.forEach((x)=> {
             if (x%2 == 0) arr.push(x)
         })
         console.log(arr);
-    }, 0)
+    })
 }
 
 console.log('start');
