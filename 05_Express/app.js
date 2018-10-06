@@ -14,6 +14,12 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Disable x-powered-by
+app.disable('x-powered-by');
+
+// Enable case sensitive routing
+app.enable('case sensitive routing');
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
