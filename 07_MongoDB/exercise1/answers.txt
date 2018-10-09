@@ -1,0 +1,17 @@
+//Books collection
+{
+    isbn : '',
+    authors : [],
+    keywords : [],
+    is_available: '',
+}
+
+//Student 
+{
+    name: '',
+    stuent_id: '',
+    borrowed_books: [
+        { book: '', chechout_date : '', return_date : '', is_returned: ''},
+        { book: '', chechout_date : '', return_date : '', is_returned: ''}
+        ]
+}
