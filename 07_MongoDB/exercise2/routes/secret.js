@@ -3,7 +3,7 @@ const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const crypto = require('crypto');
 
-/* GET users listing. */
+/* decrypt message */
 router.get('/', function(req, res, next) {
     MongoClient.connect('mongodb://127.0.0.1:27017', { useNewUrlParser: true }, (err, client) => {
         if (err) throw err;
