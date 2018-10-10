@@ -7,17 +7,17 @@
     is_available: '',
 }
 
-//Student 
+//Student
 {
     name: '',
-    stuent_id: '',
+    student_id: '',
     username: '',
     email: '',
     borrowed_books: [
-        { 
-            book_title: '', 
-            chechout_date : '', 
-            return_date : '', 
+        {
+            book_title: '',
+            chechout_date : '',
+            return_date : '',
             is_returned: ''
         }
         ]

@@ -1,0 +1,10 @@
+In order to enhance the performance of the application library, 
+we can use the concepts of indexes.
+
+For instance we can use:
+
+- Books collection, a compound index,
+formed by (title, isbn)
+
+- Students collection, a multikey index,
+formed by (student_id, borrowed_books)
