@@ -1,6 +1,7 @@
-//Books collection
+//Books
 {
     isbn : '',
+    title : '',
     authors : [],
     keywords : [],
     is_available: '',
@@ -10,8 +11,28 @@
 {
     name: '',
     stuent_id: '',
+    username: '',
+    email: '',
     borrowed_books: [
-        { book: '', chechout_date : '', return_date : '', is_returned: ''},
-        { book: '', chechout_date : '', return_date : '', is_returned: ''}
+        { 
+            book_title: '', 
+            chechout_date : '', 
+            return_date : '', 
+            is_returned: ''
+        }
         ]
+}
+
+//Librarian
+{
+    name: '',
+    email: '',
+    username: '',
+}
+
+//Authorization Access
+{
+    username: '',
+    password: '',
+    role: '',
 }
