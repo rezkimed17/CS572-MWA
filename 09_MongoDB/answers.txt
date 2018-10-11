@@ -1,1 +1,25 @@
 1.
+db.homework9.aggregate([
+	{$match: {state: "IA"}}
+])
+
+2.
+db.homework9.aggregate([
+	{$match: {pop: {$lt: 1000}}}
+])
+
+3.
+db.homework9.aggregate([
+	{$group: {_id:"$city", state:{$first: "$state"}, pop:{$first: "$pop"}, count_zip: {$sum:1}}}, 
+	{$match: {count_zip: {$gt:1}}}, 
+	{$project: {_id:0, city:"$_id", state:"$state", pop:"$pop"}}, 
+	{$sort: {state:1, city:1}}
+])
+
+4.
+db.homework9.aggregate([
+	{$group: {_id: {city:"$city",state:"$state"}, pop:{$sum:"$pop"}}},
+	{$sort: {"_id.state":1,pop:1}},
+	{$group: {_id:"$_id.state", city:{$first:"$_id.city"}, pop:{$first:"$pop"}}}, 
+	{$sort: {_id:1}}
+])
