@@ -9,7 +9,7 @@ export class MynewcolorDirective implements OnInit {
   @Input() mynewcolor: string;
   @Output() colorChange: EventEmitter<string>;
   private colors: string[];
-  private current_color = 'Black';
+  private current_color: string;
 
   constructor(private element:ElementRef) {
     this.colors = ['Black', 'Yellow', 'Blue', 'Red', 'Pink', 'Green'];
