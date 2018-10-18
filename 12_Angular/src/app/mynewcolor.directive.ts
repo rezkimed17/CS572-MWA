@@ -6,22 +6,20 @@ import { hostElement } from '@angular/core/src/render3/instructions';
 })
 export class MynewcolorDirective implements OnInit {
   
+  private colors: string[];
   @Input() mynewcolor: string;
   @Output() colorChange: EventEmitter<string>;
-  private colors: string[];
-  private current_color: string;
 
+  @HostBinding('style.color') current_color: string;
+  @HostListener('click') hostElementClicked() {
+    this.current_color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    this.colorChange.emit(this.current_color);
+  }
+  
   constructor(private element:ElementRef) {
     this.colors = ['Black', 'Yellow', 'Blue', 'Red', 'Pink', 'Green'];
     this.colorChange = new EventEmitter();
     this.current_color = this.colors[0];
-  }
-
-  
-  @HostListener('click') hostElementClicked() {
-    this.current_color = this.colors[Math.floor(Math.random() * this.colors.length)];
-    this.element.nativeElement.style.color = this.current_color;
-    this.colorChange.emit(this.current_color);
   }
 
   ngOnInit(): void {
