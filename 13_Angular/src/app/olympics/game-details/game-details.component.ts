@@ -38,9 +38,7 @@ export class GameDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.service.getDataById(params["id"])
-        .then(data => this.details = data)
-        .catch(error => console.log(error));
+      this.details = this.service.getDataById(params["id"]);
     });
   }
 

@@ -14,10 +14,8 @@ import { DbService } from '../db.service';
 export class GamesComponent implements OnInit {
   games: object;
   constructor(private service: DbService) {}
+  
   ngOnInit() {
-    console.log("loading ...");
-    this.service.getData()
-      .then(data => this.games = data)
-      .catch(error => console.log(error));
+    this.games = this.service.getData();
   }
 }

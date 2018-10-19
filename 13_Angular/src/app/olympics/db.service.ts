@@ -33,22 +33,15 @@ export class DbService {
     }
   ]
   constructor() {}
+  
   getData(){
-    return new Promise((resolve, reject)=>{
-      setTimeout(() => {
-          let data = this.document.map((entry) => {
-            return { id: entry._id, name: entry.game.name };
-          });
-          resolve(data);
-      }, 300)
-    })
+    return this.document.map((entry) => {
+      return { id: entry._id, name: entry.game.name };
+    });
   }
   getDataById(id){
-    return new Promise((resolve, reject)=>{
-      setTimeout(() => {
-          let data = this.document.filter( entry => entry._id == id);
-          resolve(data[0]);
-      }, 300)
-    })
+    let data = this.document.filter( entry => entry._id == id);
+    if(data) return data[0];
+    else return null;
   }
 }

@@ -4,13 +4,23 @@ import { GamesComponent } from './games/games.component';
 import { DbService } from './db.service';
 import { Routes, RouterModule } from '@angular/router';
 import { GameDetailsComponent } from './game-details/game-details.component';
+import { GameGuard } from './game.guard';
+import { ErrorComponent } from './error.component';
 
 export const ROUTE: Routes = [
   { path: '', 
     component: GamesComponent,
     children: [
-      { path: 'game/:id', component: GameDetailsComponent}
+      { 
+        path: 'game/:id', 
+        component: GameDetailsComponent,
+        canActivate: [GameGuard]
+      }
     ]
+  },
+  { 
+    path: 'notfound', 
+    component: ErrorComponent,
   }
 ];
 
@@ -19,8 +29,8 @@ export const ROUTE: Routes = [
     CommonModule,
     RouterModule.forChild(ROUTE)
   ],
-  providers: [DbService],
-  declarations: [GamesComponent, GameDetailsComponent],
+  providers: [DbService, GameGuard],
+  declarations: [GamesComponent, GameDetailsComponent, ErrorComponent],
   bootstrap: [GamesComponent]
 })
 export class OlympicsModule { }
