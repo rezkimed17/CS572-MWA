@@ -39,7 +39,7 @@ export class DbService {
           let data = this.document.map((entry) => {
             return { id: entry._id, name: entry.game.name };
           });
-          resolve(JSON.stringify(data));
+          resolve(data);
       }, 300)
     })
   }
@@ -47,7 +47,7 @@ export class DbService {
     return new Promise((resolve, reject)=>{
       setTimeout(() => {
           let data = this.document.filter( entry => entry._id == id);
-          resolve(JSON.stringify(data[0]));
+          resolve(data[0]);
       }, 300)
     })
   }

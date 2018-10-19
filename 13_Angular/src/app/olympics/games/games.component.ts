@@ -3,8 +3,13 @@ import { DbService } from '../db.service';
 
 @Component({
   selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css']
+  template: `
+    <div *ngFor="let game of games; let i=index">
+      {{i+1}} - <a [routerLink]="['game', game.id]"> {{game.name}} </a>
+    </div>
+    <router-outlet></router-outlet>
+  `,
+  styles: ['div.container {padding: 40px;}']
 })
 export class GamesComponent implements OnInit {
   games: object;
@@ -12,7 +17,7 @@ export class GamesComponent implements OnInit {
   ngOnInit() {
     console.log("loading ...");
     this.service.getData()
-      .then( data => this.games = JSON.parse(data) )
-      .catch((error) => console.log(error));
+      .then(data => this.games = data)
+      .catch(error => console.log(error));
   }
 }

@@ -5,19 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 
-const routes: Routes = [
+const ROUTE: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: '',
-        component: HomeComponent
-      },
-      {
-        path: 'games',
-        loadChildren: './olympics/olympics.module#OlympicsModule'
-      }
-    ]
+    component: HomeComponent
+  },
+  {
+    path: 'games',
+    loadChildren: './olympics/olympics.module#OlympicsModule'
   }
 ]
 
@@ -28,7 +23,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(ROUTE)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,22 +5,19 @@ import { DbService } from './db.service';
 import { Routes, RouterModule } from '@angular/router';
 import { GameDetailsComponent } from './game-details/game-details.component';
 
-export const lazy_route = [
-  { path: '', component: GamesComponent},
+export const ROUTE: Routes = [
   { path: '', 
     component: GamesComponent,
     children: [
-    {
-      path: 'game/:id',
-      component: GameDetailsComponent
-    }]
+      { path: 'game/:id', component: GameDetailsComponent}
+    ]
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(lazy_route)
+    RouterModule.forChild(ROUTE)
   ],
   providers: [DbService],
   declarations: [GamesComponent, GameDetailsComponent],

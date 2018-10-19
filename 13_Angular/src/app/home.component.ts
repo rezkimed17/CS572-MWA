@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       Welcome! this is {{title}}
     </p>
   `,
-  styles: ['p {padding: 40px}']
+  styles: ['']
 })
 export class HomeComponent {
   title: string = "Homework13";

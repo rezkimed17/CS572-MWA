@@ -1,7 +1,0 @@
-<div class="container">
-    <div *ngFor="let game of games; let i=index">
-       {{i+1}} - <a routerLink="game/{{game.id}}"> {{game.name}} </a>
-    </div>
-    <router-outlet></router-outlet>
-</div>
-
